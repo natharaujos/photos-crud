@@ -1,9 +1,10 @@
 import "./App.css";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <>
-      <h1 className="text-2xl text-black font-regular">Tailwind + Vite</h1>
+      <Layout>Hi</Layout>
     </>
   );
 }
