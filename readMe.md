@@ -42,12 +42,13 @@ npm run dev // Or use the command specified in your package.json
 
 Built With
 Frontend:
-React - Typescript library for building user interfaces.
-Shadcn/UI - React UI library.
-Tailwind CSS - Utility-first CSS framework.
+- React - Typescript library for building user interfaces.
+- Shadcn/UI - React UI library.
+- Tailwind CSS - Utility-first CSS framework.
 Backend:
-Node.js - Typescript runtime environment.
-Express - Web application framework for Node.js.
+- Node.js - Typescript runtime environment.
+- Express - Web application framework for Node.js.]
+  
 Project Structure
 front: Contains the React frontend application.
 back: Contains the Node/Express backend application.
