@@ -10,6 +10,7 @@ function App() {
       <Router>
         <Layout>
           <Routes>
+            <Route path="/" element={<h1>Welcome to Photo Crud!</h1>} />
             <Route path="/user/:userId/albums" element={<AlbumsTable />} />
             <Route path="/user" element={<UsersTable />} />
           </Routes>

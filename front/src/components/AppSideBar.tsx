@@ -16,10 +16,12 @@ import { useNavigate } from "react-router-dom";
 const items = [
   {
     title: MenuItems.HOME,
+    url: "/",
     icon: Home,
   },
   {
     title: MenuItems.USERS,
+    url: "/user",
     icon: User,
   },
 ];
@@ -48,7 +50,7 @@ export function AppSidebar({ setOption, option }: IAppSideBar) {
                   <SidebarMenuButton asChild>
                     <a
                       className={`${option === item.title ? "text-black" : ""}`}
-                      onClick={() => navigate("/user")}
+                      onClick={() => navigate(item.url)}
                     >
                       <item.icon />
                       <span>{item.title}</span>

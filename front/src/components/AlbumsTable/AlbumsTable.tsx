@@ -9,15 +9,17 @@ import {
 } from "@/components/ui/table";
 import { getAlbumByUserId } from "@/services/UserService";
 import { useEffect, useState } from "react";
-import { AlbumIcon } from "lucide-react";
+import { SkipBackIcon } from "lucide-react";
 import Album from "@/models/Album";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import StateUser from "@/shared/interfaces/StateUser";
+import TooltipPersonalized from "@/shared/components/Tooltip/Tooltip";
 
 export default function AlbumsTable() {
   const [albums, setAlbums] = useState<Album[]>([]);
   const { userId } = useParams();
   const { state } = useLocation() as StateUser;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -40,6 +42,7 @@ export default function AlbumsTable() {
           <TableHead className="w-[10rem] text-center">User Id</TableHead>
           <TableHead className="w-[10rem] text-center">Id</TableHead>
           <TableHead className="w-[10rem] text-center">Title</TableHead>
+          <TableHead className="w-[10rem] text-center">Options</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -51,7 +54,12 @@ export default function AlbumsTable() {
             <TableCell>
               <div className="flex justify-end">
                 <div className="cursor-pointer w-5">
-                  <AlbumIcon />
+                  <TooltipPersonalized message={"Back to Users Page"}>
+                    <SkipBackIcon
+                      onClick={() => navigate("/user")}
+                      className="w-5"
+                    />
+                  </TooltipPersonalized>
                 </div>
               </div>
             </TableCell>

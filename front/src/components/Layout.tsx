@@ -1,9 +1,10 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSideBar";
 import { useState } from "react";
+import { MenuItems } from "@/shared/Enums";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string>(MenuItems.HOME);
 
   return (
     <SidebarProvider>
