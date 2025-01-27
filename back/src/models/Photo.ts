@@ -1,6 +1,6 @@
 interface Photo {
   title: string;
-  album: string;
+  albumId: number;
   url: string;
 }
 

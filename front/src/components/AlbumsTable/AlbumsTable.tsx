@@ -9,17 +9,15 @@ import {
 } from "@/components/ui/table";
 import { getAlbumByUserId } from "@/services/UserService";
 import { useEffect, useState } from "react";
-import { SkipBackIcon, PlusIcon } from "lucide-react";
+import { SkipBackIcon, PlusIcon, ImageIcon } from "lucide-react";
 import Album from "@/models/Album";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import StateUser from "@/shared/interfaces/StateUser";
+import { useNavigate, useParams } from "react-router-dom";
 import TooltipPersonalized from "@/shared/components/Tooltip/Tooltip";
 import ModalAddPhoto from "../ModalAddPhoto/ModalAddPhoto";
 
 export default function AlbumsTable() {
   const [albums, setAlbums] = useState<Album[]>([]);
   const { userId } = useParams();
-  const { state } = useLocation() as StateUser;
   const navigate = useNavigate();
   const albumsIds = albums.map((album) => {
     return album.id.toString();
@@ -40,9 +38,7 @@ export default function AlbumsTable() {
   return (
     <>
       <Table className="bg-gray-100">
-        <TableCaption>
-          A list of all albums from the user {state.email}
-        </TableCaption>
+        <TableCaption>A list of all albums from the user {userId}</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[10rem] text-center">User Id</TableHead>
@@ -59,7 +55,7 @@ export default function AlbumsTable() {
               <TableCell>{album.title}</TableCell>
               <TableCell>
                 <div className="flex justify-end">
-                  <div className="cursor-pointer flex justify-center">
+                  <div className="cursor-pointer flex justify-center gap-3">
                     <TooltipPersonalized message={"Back to Users Page"}>
                       <SkipBackIcon
                         onClick={() => navigate("/user")}
@@ -69,6 +65,14 @@ export default function AlbumsTable() {
                     <TooltipPersonalized message={"Add Photo"}>
                       <PlusIcon
                         onClick={() => setOpenModal(true)}
+                        className="w-5"
+                      />
+                    </TooltipPersonalized>
+                    <TooltipPersonalized message={"See Photos"}>
+                      <ImageIcon
+                        onClick={() =>
+                          navigate(`/user/${userId}/albums/${album.id}/photos`)
+                        }
                         className="w-5"
                       />
                     </TooltipPersonalized>

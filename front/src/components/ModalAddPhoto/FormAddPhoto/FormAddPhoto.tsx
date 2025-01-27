@@ -1,11 +1,11 @@
 import { useState } from "react";
 import InputPhotoUrl from "./InputPhotoUrl/InputPhotoUrl";
-import InputPhotoDescription from "./InputPhotoDescription/InputPhotoDescription";
 import InputAvailableAlbums from "./InputAvailableAlbums/InputAvailableAlbums";
 import { Button } from "@/components/ui/button";
 import Photo from "@/models/Photo";
 import { useDispatch } from "react-redux";
 import { addPhoto } from "@/store/slices/PhotoSlice";
+import InputPhotoTitle from "./InputPhotoTitle/InputPhotoTitle";
 
 interface IFormAddPhoto {
   albums: string[];
@@ -14,13 +14,13 @@ interface IFormAddPhoto {
 
 export default function FormAddPhoto({ albums, setOpen }: IFormAddPhoto) {
   const [photoUrl, setPhotoUrl] = useState<string>("");
-  const [photoDescription, setPhotoDescription] = useState<string>("");
+  const [photoTitle, setPhotoTitle] = useState<string>("");
   const [album, setAlbum] = useState<string>("");
   const dispatch = useDispatch();
 
   const managePhoto = () => {
     const photo: Photo = {
-      description: photoDescription,
+      title: photoTitle,
       album: album,
       url: photoUrl,
     };
@@ -33,10 +33,7 @@ export default function FormAddPhoto({ albums, setOpen }: IFormAddPhoto) {
     <div className="flex flex-col gap-5">
       <div className="w-full flex flex-col gap-5">
         <InputPhotoUrl value={photoUrl} setValue={setPhotoUrl} />
-        <InputPhotoDescription
-          value={photoDescription}
-          setValue={setPhotoDescription}
-        />
+        <InputPhotoTitle value={photoTitle} setValue={setPhotoTitle} />
         <InputAvailableAlbums setValue={setAlbum} options={albums} />
       </div>
       <div className="w-full flex justify-center gap-5">

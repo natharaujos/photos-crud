@@ -1,7 +1,7 @@
 import Photo from "@/models/Photo";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface PhotoState {
+export interface PhotoState {
   photos: Photo[];
 }
 
