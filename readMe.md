@@ -15,7 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/natharaujos/photos-crud.git
 Navigate to the project directory:
 cd your-repository
 Install frontend dependencies:
