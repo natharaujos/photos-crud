@@ -11,11 +11,13 @@ import { getAlbumByUserId } from "@/services/UserService";
 import { useEffect, useState } from "react";
 import { AlbumIcon } from "lucide-react";
 import Album from "@/models/Album";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import StateUser from "@/shared/interfaces/StateUser";
 
 export default function AlbumsTable() {
   const [albums, setAlbums] = useState<Album[]>([]);
   const { userId } = useParams();
+  const { state } = useLocation() as StateUser;
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -30,7 +32,9 @@ export default function AlbumsTable() {
 
   return (
     <Table className="bg-gray-100">
-      <TableCaption>A list of all albums.</TableCaption>
+      <TableCaption>
+        A list of all albums from the user {state.email}
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[10rem] text-center">User Id</TableHead>

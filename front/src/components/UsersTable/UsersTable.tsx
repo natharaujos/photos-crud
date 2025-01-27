@@ -12,6 +12,7 @@ import { getUsers } from "@/services/UserService";
 import { useEffect, useState } from "react";
 import { AlbumIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import StateUser from "@/shared/interfaces/StateUser";
 
 export default function UsersTable() {
   const [users, setUsers] = useState<User[]>([]);
@@ -45,7 +46,11 @@ export default function UsersTable() {
               <div className="flex justify-end">
                 <div className="cursor-pointer w-5">
                   <AlbumIcon
-                    onClick={() => navigate(`/user/${user.id}/albums`)}
+                    onClick={() =>
+                      navigate(`/user/${user.id}/albums`, {
+                        state: user,
+                      } as StateUser)
+                    }
                   />
                 </div>
               </div>
