@@ -19,23 +19,26 @@ git clone https://github.com/your-username/your-repository.git
 Navigate to the project directory:
 cd your-repository
 Install frontend dependencies:
-cd client  // Navigate to the client directory
+cd front  // Navigate to the front directory
 npm install
 # or
 yarn install
+
 Install backend dependencies:
 cd ../server // Navigate to the server directory
 npm install
 # or
 yarn install
+
 Running the application
 Start the backend server:
-cd server
-npm start  // Or use the command specified in your package.json
+cd back
+npm run dev
+
 Start the frontend development server:
-cd client
-npm start // Or use the command specified in your package.json
-The application should now be running at http://localhost:3000 (or the port specified in your configuration).
+cd front
+npm run dev // Or use the command specified in your package.json
+```
 
 Built With
 Frontend:
