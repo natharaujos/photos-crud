@@ -12,3 +12,15 @@ export const getUsers = async () => {
     return [];
   }
 };
+
+export const getAlbumByUserId = async (userId: string) => {
+  try {
+    const response = await axios.get<User[]>(
+      `${BASE_URL}/users/${userId}/albums`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+    return [];
+  }
+};
