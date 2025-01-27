@@ -4,6 +4,8 @@ import InputPhotoDescription from "./InputPhotoDescription/InputPhotoDescription
 import InputAvailableAlbums from "./InputAvailableAlbums/InputAvailableAlbums";
 import { Button } from "@/components/ui/button";
 import Photo from "@/models/Photo";
+import { useDispatch } from "react-redux";
+import { addPhoto } from "@/store/slices/PhotoSlice";
 
 interface IFormAddPhoto {
   albums: string[];
@@ -14,15 +16,17 @@ export default function FormAddPhoto({ albums, setOpen }: IFormAddPhoto) {
   const [photoUrl, setPhotoUrl] = useState<string>("");
   const [photoDescription, setPhotoDescription] = useState<string>("");
   const [album, setAlbum] = useState<string>("");
+  const dispatch = useDispatch();
 
-  const addPhoto = () => {
+  const managePhoto = () => {
     const photo: Photo = {
       description: photoDescription,
       album: album,
       url: photoUrl,
     };
 
-    console.log(photo);
+    dispatch(addPhoto(photo));
+    setOpen(false);
   };
 
   return (
@@ -37,7 +41,7 @@ export default function FormAddPhoto({ albums, setOpen }: IFormAddPhoto) {
       </div>
       <div className="w-full flex justify-center gap-5">
         <Button onClick={() => setOpen(false)}>Cancel</Button>
-        <Button type="submit" onClick={() => addPhoto()}>
+        <Button type="submit" onClick={() => managePhoto()}>
           Add Photo
         </Button>
       </div>
