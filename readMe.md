@@ -1,4 +1,4 @@
-# My Awesome Project
+# Photo Crud
 
 This project is a full-stack application built with React, Shadcn/UI, Tailwind CSS on the frontend and Node.js with Express on the backend.  It demonstrates [briefly describe the functionality of your application, e.g., a photo gallery, a to-do list, etc.].
 
