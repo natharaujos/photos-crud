@@ -1,13 +1,17 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSideBar";
+import { useState } from "react";
+import { MenuItems } from "@/shared/Enums";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout() {
+  const [selectedOption, setSelectedOption] = useState<string>("");
+
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar setOption={setSelectedOption} option={selectedOption} />
       <main>
-        <SidebarTrigger />
-        {children}
+        {selectedOption === MenuItems.HOME && <div>Hello Home!</div>}
+        {selectedOption === MenuItems.USERS && <div>Hello Users!</div>}
       </main>
     </SidebarProvider>
   );
