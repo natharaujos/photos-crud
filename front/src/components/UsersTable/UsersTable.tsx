@@ -11,9 +11,11 @@ import User from "@/models/User";
 import { getUsers } from "@/services/UserService";
 import { useEffect, useState } from "react";
 import { AlbumIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function UsersTable() {
   const [users, setUsers] = useState<User[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -35,14 +37,16 @@ export default function UsersTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {users?.map((user) => (
-          <TableRow>
+        {users?.map((user, index) => (
+          <TableRow key={index}>
             <TableCell className="font-medium">{user.username}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>
               <div className="flex justify-end">
                 <div className="cursor-pointer w-5">
-                  <AlbumIcon />
+                  <AlbumIcon
+                    onClick={() => navigate(`/user/${user.id}/albums`)}
+                  />
                 </div>
               </div>
             </TableCell>

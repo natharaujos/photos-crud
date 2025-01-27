@@ -8,7 +8,7 @@ userController.get("/users", async (req, res) => {
   res.send(users);
 });
 
-userController.get("/users/:userId/album", async (req, res) => {
+userController.get("/users/:userId/albums", async (req, res) => {
   const { userId } = req.params;
   try {
     const album = await getAlbumByUserId(userId);

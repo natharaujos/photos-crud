@@ -10,17 +10,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { MenuItems } from "@/shared/Enums";
+import { useNavigate } from "react-router-dom";
 
 // Menu items.
 const items = [
   {
     title: MenuItems.HOME,
-    url: "#",
     icon: Home,
   },
   {
     title: MenuItems.USERS,
-    url: "#",
     icon: User,
   },
 ];
@@ -31,6 +30,8 @@ interface IAppSideBar {
 }
 
 export function AppSidebar({ setOption, option }: IAppSideBar) {
+  const navigate = useNavigate();
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -46,8 +47,8 @@ export function AppSidebar({ setOption, option }: IAppSideBar) {
                 >
                   <SidebarMenuButton asChild>
                     <a
-                      href={item.url}
                       className={`${option === item.title ? "text-black" : ""}`}
+                      onClick={() => navigate("/user")}
                     >
                       <item.icon />
                       <span>{item.title}</span>
